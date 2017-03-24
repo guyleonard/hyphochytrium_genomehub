@@ -27,7 +27,7 @@ sleep 10 &&
 echo Step 2. Set up template database using EasyMirror &&
 docker run --rm \
            --name hyphochytrium-ensembl \
-           -v ~/hyphochytrium_genomehub/import/ensembl/conf:/ensembl/conf:ro \
+           -v ~/hyphochytrium_genomehub/ensembl/conf:/ensembl/conf:ro \
            --link hyphochytrium-mysql \
            -p 8081:8080 \
           genomehubs/easy-mirror:17.03.23 /ensembl/scripts/database.sh /ensembl/conf/database.ini &&
@@ -82,3 +82,26 @@ docker run -d \
            -v ~/hyphochytrium_genomehub/import/blast/data:/dbs \
            -p 8083:4567 \
            genomehubs/sequenceserver:17.03.23 &&
+
+
+
+echo Step 9. Waiting for site to load &&
+
+until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8081//i/placeholder.png); do
+    printf '.'
+    sleep 5
+done &&
+
+echo done &&
+
+echo Visit your mirror site at 127.0.0.1:8081 &&
+
+exit
+
+echo Unable to set up GenomeHubs site, removing containers
+
+docker stop hyphochytrium-mysql && docker rm hyphochytrium-mysql
+docker stop hyphochytrium-ensembl && docker rm hyphochytrium-ensembl
+#docker stop hyphochytrium-h5ai && docker rm genomehubs-h5ai
+docker stop hyphochytrium-sequenceserver && docker rm hypochytrium-sequenceserver
+
