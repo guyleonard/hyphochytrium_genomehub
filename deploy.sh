@@ -37,8 +37,8 @@ docker run --rm \
            -u $UID:$GROUPS \
            --name easy-import-hyphochytrium-catenoides \
            --link hyphochytrium-mysql \
-           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/conf \
-           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/data \
+           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/hypho/conf \
+           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/hypho/data \
            -e DATABASE=Hyphochytrium_catenoides_2017 \
            -e FLAGS="-s -p -g" \
            genomehubs/easy-import:17.03.23 &&
@@ -48,8 +48,8 @@ docker run --rm \
            -u $UID:$GROUPS \
            --name easy-import-operophtera_brumata_v1_core_32_85_1 \
            --link hyphochytrium-mysql \
-           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/conf \
-           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/data \
+           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/hypho/conf \
+           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/hypho/data \
            -v ~/hyphochytrium_genomehub/import/download/data:/import/download \
            -v ~/hyphochytrium_genomehub/import/blast/data:/import/blast \
            -e DATABASE=Hyphochytrium_catenoides_2017 \
@@ -63,8 +63,8 @@ docker run --rm \
            -u $UID:$GROUPS \
            --name easy-import-phytophthora_ramorum_core_32_85_1 \
            --link hyphochytrium-mysql \
-           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/conf \
-           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/data \
+           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/hypho/conf \
+           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/hypho/data \
            -v ~/hyphochytrium_genomehub/import/download/data:/import/download \
            -v ~/hyphochytrium_genomehub/import/blast/data:/import/blast \
            -e DATABASE=phytophthora_ramorum_core_32_85_1 \
