@@ -37,8 +37,8 @@ docker run --rm \
            -u $UID:$GROUPS \
            --name easy-import-hyphochytrium-catenoides \
            --link hyphochytrium-mysql \
-           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/hypho/conf \
-           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/hypho/data \
+           -v ~/hyphochytrium_genomehub/import/conf:/import/conf \
+           -v ~/hyphochytrium_genomehub/import/data:/import/data \
            -e DATABASE=Hyphochytrium_catenoides_2017 \
            -e FLAGS="-s -p -g" \
            genomehubs/easy-import:17.03.23 &&
@@ -48,14 +48,14 @@ docker run --rm \
            -u $UID:$GROUPS \
            --name easy-import-operophtera_brumata_v1_core_32_85_1 \
            --link hyphochytrium-mysql \
-           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/hypho/conf \
-           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/hypho/data \
-           -v ~/hyphochytrium_genomehub/import/download/data:/import/download \
-           -v ~/hyphochytrium_genomehub/import/blast/data:/import/blast \
+           -v ~/hyphochytrium_genomehub/import/conf:/import/conf \
+           -v ~/hyphochytrium_genomehub/import/data:/import/data \
+           -v ~/hyphochytrium_genomehub/download/data:/download \
+           -v ~/hyphochytrium_genomehub/blast/data:/blast \
            -e DATABASE=Hyphochytrium_catenoides_2017 \
            -e FLAGS="-e -j -i" \
            genomehubs/easy-import:17.03.23 &&
-ls ~/hyphochytrium_genomehub/import/download/data/sequence/* 2> /dev/null &&
+ls ~/hyphochytrium_genomehub/download/data/sequence/* 2> /dev/null &&
 
 
 echo Step 5. Export sequences, export json and index database for mirrored Phytophthera ramorum &&
@@ -63,14 +63,14 @@ docker run --rm \
            -u $UID:$GROUPS \
            --name easy-import-phytophthora_ramorum_core_32_85_1 \
            --link hyphochytrium-mysql \
-           -v ~/hyphochytrium_genomehub/import/hypho/conf:/import/hypho/conf \
-           -v ~/hyphochytrium_genomehub/import/hypho/data:/import/hypho/data \
-           -v ~/hyphochytrium_genomehub/import/download/data:/import/download \
-           -v ~/hyphochytrium_genomehub/import/blast/data:/import/blast \
+           -v ~/hyphochytrium_genomehub/import/conf:/import/conf \
+           -v ~/hyphochytrium_genomehub/import/data:/import/data \
+           -v ~/hyphochytrium_genomehub/download/data:/download \
+           -v ~/hyphochytrium_genomehub/blast/data:/blast \
            -e DATABASE=phytophthora_ramorum_core_32_85_1 \
            -e FLAGS="-e -i -j" \
            genomehubs/easy-import:17.03.23 &&
-ls ~/demo/genomehubs-import/download/data/sequence/Phy* 2> /dev/null &&
+ls ~/hyphochytrium_genomehub/download/data/sequence/Phy* 2> /dev/null &&
 
 
 echo Step 7. Startup SequenceServer BLAST server &&
@@ -78,8 +78,8 @@ echo Step 7. Startup SequenceServer BLAST server &&
 docker run -d \
            -u $UID:$GROUPS \
            --name hyphochytrium-sequenceserver \
-           -v ~/hyphochytrium_genomehub/import/blast/conf:/conf \
-           -v ~/hyphochytrium_genomehub/import/blast/data:/dbs \
+           -v ~/hyphochytrium_genomehub/blast/conf:/conf \
+           -v ~/hyphochytrium_genomehub/blast/data:/dbs \
            -p 8083:4567 \
            genomehubs/sequenceserver:17.03.23 &&
 
