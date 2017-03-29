@@ -1,0 +1,32 @@
+{
+   "assembly" : {
+      "accession" : "GCA_000149735.1",
+      "date" : "2004-04",
+      "scaffold_count" : "2576",
+      "gc_percent" : "53.85",
+      "span" : "66652401",
+      "atgc" : "54424536",
+      "n" : "12227865",
+      "name" : "ASM14973v1"
+   },
+   "provider" : {
+      "url" : "http://genome.jgi.doe.gov/Phyra1_1/Phyra1_1.home.html",
+      "name" : "Joint Genome Institute"
+   },
+   "genebuild" : {
+      "exon_count" : "40851",
+      "transcript_count" : "15955",
+      "method" : "Imported from Joint Genome Institute",
+      "version" : "JGI-Phyra1_1",
+      "cds_count" : "15605",
+      "start_date" : "2006-12-JGI",
+      "gene_count" : "15955"
+   },
+   "species" : {
+      "taxonomy_id" : "164328",
+      "common_name" : "Sudden oak death agent",
+      "display_name" : "Phytophthora ramorum",
+      "scientific_name" : "Phytophthora ramorum"
+   }
+}
+
